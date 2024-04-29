@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-product-list',
-  templateUrl: './product-list.component.html',
-  styleUrl: './product-list.component.css'
+  selector: 'app-container',
+  templateUrl: './container.component.html',
+  styleUrl: './container.component.css'
 })
-export class ProductListComponent {
+export class ContainerComponent {
+  name: string = 'rohan';
   product = {
     name: 'iPhone X',
     price: 789,
@@ -16,5 +17,9 @@ export class ProductListComponent {
 
   getDiscountedPrice() {
     return this.product.price + ((this.product.price * this.product.discount) / 100)
+  }
+
+  onNameChange(input: any) {
+    this.name = input.target.value;
   }
 }
