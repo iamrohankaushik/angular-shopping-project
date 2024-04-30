@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'container-search',
@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class SearchComponent {
   searchText: string = '';
+  @Output()
+  searchButtonClick: EventEmitter<string> = new EventEmitter<string>();
+  onSearchButtonClick(event: any) {
+    this.searchText = event.target.value;
+    return this.searchButtonClick.emit(this.searchText);
+  }
 }
