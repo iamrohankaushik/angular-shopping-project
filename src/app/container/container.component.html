@@ -1,4 +1,6 @@
 <div class="ekart--product--container">
     <container-search (searchButtonClick)="setSearchText($event)"></container-search>
-    <container-product-list [searchedText]="searchText"></container-product-list>
+    <container-product-list [searchedText]="searchText" #productListRef></container-product-list>
+    <!-- 'productListComponent' stores reference of class so can use its 'selectedProduct' property -->
+    <container-product-detail *ngIf="productListRef.selectedProduct" [product]="productListComponent.selectedProduct"></container-product-detail>
 </div>

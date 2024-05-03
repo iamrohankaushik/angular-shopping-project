@@ -1,11 +1,15 @@
+<!-- output event from child to parent -->
+<product-list-filter [all]="totalProducts" [inStock]="inStockProducts" [outOfStock]="outOfStockProducts"
+    (onChangeRadio)="filterChanged($event)">
+</product-list-filter>
 <div class="ekart--product--container">
-    <!-- output event from child to parent -->
-    <product-list-filter [all]="totalProducts" [inStock]="inStockProducts" [outOfStock]="outOfStockProducts"
-        (onChangeRadio)="filterChanged($event)"></product-list-filter>
     <!-- using Input decorator -->
     <!-- *ngIf="selectedRadio=='all' || item.is_in_inventory.toString()==selectedRadio" -->
-    <div *ngFor="let item of products">
-        <product-list-product [product]="item"
-            *ngIf="searchedText==''||item.name.includes(searchedText)"></product-list-product>
-    </div>
+    <ng-container *ngFor="let item of products">
+        <product-list-product 
+            [product]="item"
+            *ngIf="searchedText==''||item.name.toLowerCase().includes(searchedText.toLowerCase())"
+            (click)="selectedProduct=item">
+        </product-list-product>
+    </ng-container>
 </div>

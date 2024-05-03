@@ -360,4 +360,5 @@ export class ProductListComponent {
   }
   @Input()
   searchedText!: string;
+  selectedProduct!: Product; //this property is used in container using templateRef
 }

@@ -9,8 +9,9 @@ export class SearchComponent {
   searchText: string = '';
   @Output()
   searchButtonClick: EventEmitter<string> = new EventEmitter<string>();
-  onSearchButtonClick(event: any) {
-    this.searchText = event.target.value;
+  onSearchButtonClick(templateRef: HTMLInputElement) {
+    //templateRef have reference of dom element
+    this.searchText = templateRef.value;
     return this.searchButtonClick.emit(this.searchText);
   }
 }
